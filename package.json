@@ -34,7 +34,7 @@
     "hexo-theme-landscape": "^1.0.0",
     "lucide-react": "^0.511.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react-dom": "^19.2.7",
     "tailwind-merge": "^3.0.2",
     "zustand": "^5.0.14"
   },
@@ -42,7 +42,7 @@
     "@eslint/js": "^9.25.0",
     "@types/node": "^22.15.30",
     "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^4.4.1",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.25.0",
