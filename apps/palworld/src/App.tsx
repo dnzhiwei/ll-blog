@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Settings,
   Server,
@@ -7,7 +7,6 @@ import {
   HardDrive,
   Pause,
   FileText,
-  Gamepad2,
   User,
   Sparkles,
   Building2,
@@ -18,12 +17,10 @@ import {
   Menu,
   X,
   Search,
-  Upload,
 } from 'lucide-react';
 import { ConfigCard } from './components/ConfigCard';
-import { ExportPanel } from './components/ExportPanel';
+import { ToolbarActions } from './components/ToolbarActions';
 import { configCategories, defaultConfigItems } from './data/defaultConfig';
-import { useConfigStore } from './hooks/useConfigStore';
 
 const iconMap: Record<string, React.ReactNode> = {
   Settings: <Settings className="w-4 h-4 text-pal-text-muted" />,
@@ -33,7 +30,6 @@ const iconMap: Record<string, React.ReactNode> = {
   HardDrive: <HardDrive className="w-4 h-4 text-pal-text-muted" />,
   Pause: <Pause className="w-4 h-4 text-pal-text-muted" />,
   FileText: <FileText className="w-4 h-4 text-pal-text-muted" />,
-  Gamepad2: <Gamepad2 className="w-4 h-4 text-pal-text-muted" />,
   User: <User className="w-4 h-4 text-pal-text-muted" />,
   Sparkles: <Sparkles className="w-4 h-4 text-pal-text-muted" />,
   Building2: <Building2 className="w-4 h-4 text-pal-text-muted" />,
@@ -48,8 +44,6 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [importSuccess, setImportSuccess] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const { importConfig } = useConfigStore();
 
   useEffect(() => {
     const handleResize = () => {
@@ -72,19 +66,6 @@ function App() {
     return defaultConfigItems.filter((item) => item.category === categoryId);
   };
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const content = event.target?.result as string;
-      importConfig(content);
-      setImportSuccess(true);
-    };
-    reader.readAsText(file);
-  };
-
   const hasSearchResults = () => {
     if (!searchQuery) return true;
     return defaultConfigItems.some(
@@ -96,32 +77,17 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen pb-36 bg-pal-bg">
+    <div className="min-h-screen bg-pal-bg">
       <header className="sticky top-0 bg-pal-surface border-b border-pal-border z-40">
         <div className="max-w-7xl mx-auto px-4 py-3">
-          <div className="flex items-center justify-between gap-4">
-            <div>
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0">
               <h1 className="text-lg font-semibold text-pal-text">幻兽帕鲁配置工具</h1>
               <p className="text-sm text-pal-text-muted">编辑专用服务器 .env 配置</p>
             </div>
 
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                className="flex items-center gap-2 px-3 py-2 text-sm border border-pal-border bg-pal-surface text-pal-text rounded hover:bg-pal-muted"
-              >
-                <Upload className="w-4 h-4" />
-                <span className="hidden sm:inline">导入 .env</span>
-              </button>
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept=".env"
-                onChange={handleFileUpload}
-                className="hidden"
-              />
-
+            <div className="flex items-center gap-2 shrink-0">
+              <ToolbarActions onImportSuccess={() => setImportSuccess(true)} />
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -140,9 +106,9 @@ function App() {
         </div>
       )}
 
-      <div className="flex max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto flex">
         <aside
-          className={`fixed lg:sticky lg:top-[65px] top-[65px] left-0 bottom-36 w-64 bg-pal-surface border-r border-pal-border lg:h-[calc(100vh-65px-144px)] overflow-y-auto transition-transform duration-200 z-30 ${
+          className={`fixed lg:sticky lg:top-[65px] top-[65px] left-0 w-64 bg-pal-surface border-r border-pal-border z-30 transition-transform duration-200 self-start ${
             mobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
           }`}
         >
@@ -217,16 +183,14 @@ function App() {
           />
         )}
 
-        <main className="flex-1 min-w-0 px-4 py-5">
+        <main className="flex-1 min-w-0 px-4 py-5 lg:pl-0">
           <div className="mb-5">
             <h2 className="text-xl font-semibold text-pal-text mb-1">
               {selectedCategory
                 ? configCategories.find((c) => c.id === selectedCategory)?.name
                 : '全部配置'}
             </h2>
-            <p className="text-sm text-pal-text-muted">
-              修改配置后，在页面底部导出 .env 文件
-            </p>
+            <p className="text-sm text-pal-text-muted">修改完成后，点击右上角导出 .env 文件</p>
           </div>
 
           {searchQuery && !hasSearchResults() ? (
@@ -272,8 +236,6 @@ function App() {
           )}
         </main>
       </div>
-
-      <ExportPanel />
     </div>
   );
 }
