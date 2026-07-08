@@ -2,6 +2,9 @@
 title: 关于
 layout: page
 menu_id: about
+widgets: []
+article:
+  licenses: {}
 ---
 
 ## 关于本站
