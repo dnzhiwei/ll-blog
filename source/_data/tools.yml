@@ -1,0 +1,92 @@
+sections:
+  - id: toolbox
+    title: 工具箱
+    icon: fas fa-toolbox
+    tabs:
+      - name: AI 助手
+        items:
+          - title: ChatGPT
+            desc: OpenAI 对话助手
+            icon: fas fa-robot
+            url: https://chat.openai.com
+            external: true
+          - title: Claude
+            desc: Anthropic AI 助手
+            icon: fas fa-brain
+            url: https://claude.ai
+            external: true
+          - title: 博客首页
+            desc: 返回本站首页
+            icon: fas fa-home
+            url: /
+            external: false
+      - name: 在线工具
+        items:
+          - title: TinyPNG
+            desc: 智能图片无损压缩
+            icon: https://tinypng.com/images/apple-touch-icon.png
+            url: https://tinypng.com
+            external: true
+          - title: PDFCraft
+            desc: 无需上传文件的 PDF 全能工具
+            icon: fas fa-file-pdf
+            url: https://pdfcraft.dev
+            external: true
+          - title: Wormhole
+            desc: 端到端加密文件传输
+            icon: fas fa-shield-alt
+            url: https://wormhole.app
+            external: true
+          - title: 图片拼接
+            desc: 多张图片合并成一张的在线拼图工具
+            icon: fas fa-th-large
+            url: https://imgops.com
+            external: true
+          - title: 文章归档
+            desc: 浏览本站全部文章
+            icon: fas fa-archive
+            url: /archives
+            external: false
+  - id: software
+    title: 软件
+    icon: fas fa-folder-open
+    tabs:
+      - name: 装机必备
+        items:
+          - title: 微信
+            desc: 国民级即时通讯软件
+            icon: fab fa-weixin
+            url: https://weixin.qq.com
+            external: true
+          - title: Steam
+            desc: 全球最大游戏平台
+            icon: fab fa-steam
+            url: https://store.steampowered.com
+            external: true
+          - title: Google Chrome
+            desc: 谷歌浏览器
+            icon: fab fa-chrome
+            url: https://www.google.com/chrome/
+            external: true
+          - title: VS Code
+            desc: 微软开源代码编辑器
+            icon: fas fa-code
+            url: https://code.visualstudio.com
+            external: true
+      - name: 博客
+        items:
+          - title: 关于本站
+            desc: 了解博客与作者信息
+            icon: fas fa-user
+            url: /about
+            external: false
+          - title: GitHub 仓库
+            desc: 本博客源码仓库
+            icon: fab fa-github
+            url: https://github.com/dnzhiwei/ll-blog
+            external: true
+          - title: Hexo 文档
+            desc: Hexo 官方使用文档
+            icon: fas fa-book
+            url: https://hexo.io/docs/
+            external: true

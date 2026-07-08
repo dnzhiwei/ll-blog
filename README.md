@@ -72,3 +72,30 @@ npm run build       # 清理并构建（Cloudflare Pages 使用此命令）
 ### 绑定自定义域名（可选）
 
 在 Cloudflare Pages 项目 → **Custom domains** 中添加域名，并在 `_config.yml` 中将 `url` 更新为对应域名。
+
+## 工具页
+
+导航栏「工具」菜单对应 `/tools` 页面，工具列表在 [`source/_data/tools.yml`](source/_data/tools.yml) 中维护。
+
+```yaml
+sections:
+  - id: toolbox
+    title: 工具箱
+    icon: fas fa-toolbox
+    tabs:
+      - name: 在线工具
+        items:
+          - title: 示例工具
+            desc: 工具简介
+            icon: fas fa-link          # FontAwesome 图标
+            url: https://example.com # 外部链接
+            external: true
+          - title: 关于本站
+            desc: 站内页面
+            icon: fas fa-user
+            url: /about              # 站内链接
+            external: false
+```
+
+- `icon` 支持 FontAwesome 类名（如 `fas fa-link`）或图片 URL
+- `external: true` 在新标签页打开；站内链接设 `external: false`
