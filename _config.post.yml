@@ -1,0 +1,18 @@
+# 文章页专用配置（覆盖 _config.icarus.yml 中的同名项）
+# 首页仍使用全局配置：左侧个人资料 + 右侧分类/标签/最新文章
+
+toc: true
+
+sidebar:
+  right:
+    sticky: true
+
+widgets:
+  - position: right
+    type: toc
+    index: true
+    collapsed: true
+    depth: 3
+  - position: right
+    type: recent_posts
+    amount: 5

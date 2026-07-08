@@ -10,6 +10,8 @@ categories:
 
 这是你的第一篇博客文章。本站点基于 [Hexo](https://hexo.io/) 静态博客框架，并使用 [Icarus](https://ppoffice.github.io/hexo-theme-icarus/) 主题。
 
+<!-- more -->
+
 ## 快速开始
 
 ### 创建新文章
