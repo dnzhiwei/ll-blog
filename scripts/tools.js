@@ -139,6 +139,7 @@ const TOOLS_CSS = `
 .tools-page .tools-card:hover .tools-card-corner { border-top-color: #ebebeb; }
 body.tools-page-active .card-content.article > h1.title,
 .card-content.article:has(.tools-page) > h1.title { display: none; }
+.card-content.article:has(.tools-page) .article-licensing { display: none; }
 @media (max-width: 768px) {
   .tools-page .tools-grid { grid-template-columns: 1fr; }
 }
