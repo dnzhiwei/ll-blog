@@ -22,6 +22,11 @@ sections:
             external: false
       - name: 在线工具
         items:
+          - title: 幻兽帕鲁配置工具
+            desc: 可视化编辑 PalWorld 专用服务器 .env 配置
+            icon: fas fa-gamepad
+            url: /tools/palworld/
+            external: true
           - title: TinyPNG
             desc: 智能图片无损压缩
             icon: https://tinypng.com/images/apple-touch-icon.png

@@ -1,8 +1,8 @@
-title: 我的博客
+title: 0x123事
 subtitle: 记录技术与生活
-description: 一个基于 Hexo + Icarus 的个人博客
-keywords: null
-author: Your Name
+description: 林溪的个人博客，记录技术与生活
+keywords: 林溪,博客,技术,生活,个人博客
+author: 林溪
 language: zh-CN
 timezone: Asia/Shanghai
 url: https://ll-blog.pages.dev
@@ -18,7 +18,8 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: ':lang'
-skip_render: null
+skip_render:
+  - tools/palworld/**
 new_post_name: ':title.md'
 default_layout: post
 titlecase: false

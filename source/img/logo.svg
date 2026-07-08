@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="168" height="32" viewBox="0 0 168 32" role="img" aria-label="0x123&#20107;">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3273dc"/>
+      <stop offset="100%" stop-color="#00b4d8"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="2" width="28" height="28" rx="7" fill="url(#logoGrad)"/>
+  <text x="14" y="21" text-anchor="middle" fill="#ffffff" font-family="Consolas, monospace" font-size="11" font-weight="700">0x</text>
+  <text x="38" y="22" fill="#363636" font-family="Arial, sans-serif" font-size="17" font-weight="700">0x123&#20107;</text>
+</svg>

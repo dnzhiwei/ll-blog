@@ -3,6 +3,9 @@ node_modules/
 
 # Generated files
 public/
+source/tools/palworld/
+apps/palworld/dist/
+apps/palworld/.tmp/
 .deploy_git/
 db.json
 

@@ -9,15 +9,13 @@ article:
 
 ## 关于本站
 
-这是一个使用 Hexo + Icarus 主题搭建的个人博客。
+**0x123事** 是一个使用 Hexo + Icarus 主题搭建的个人博客，记录技术学习、项目实践与生活感悟。
 
 ## 关于我
 
-你好，我是 **Your Name**。
-
-在这里记录技术学习、项目实践与生活感悟。
+你好，我是 **林溪**。
 
 ## 联系方式
 
-- 邮箱：your.email@example.com
-- GitHub：https://github.com/your-username
+- 邮箱：dnzhiwei@gmail.com
+- GitHub：https://github.com/dnzhiwei

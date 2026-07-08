@@ -3,11 +3,11 @@ version: 5.1.0
 # Icarus theme variant, can be "default" or "cyberpunk"
 variant: default
 # Path or URL to the website's logo
-logo: /img/logo.svg
+logo: /img/logo.png
 # Page metadata configurations
 head:
     # URL or path to the website's icon
-    favicon: /img/favicon.svg
+    favicon: /img/favicon-32.png
     # Web application manifests configuration
     # https://developer.mozilla.org/en-US/docs/Web/Manifest
     manifest:
@@ -116,7 +116,7 @@ navbar:
 # Page footer configurations
 footer:
     # Copyright text
-    copyright: © 2026 Your Name
+    copyright: © 2026 林溪
     # Links to be shown on the right of the footer section
     links: {}
 # Article related configurations
@@ -178,14 +178,20 @@ widgets:
     -
         position: left
         type: profile
-        author: Your Name
+        author: 林溪
         author_title: 开发者
         location: 中国
-        avatar:
+        avatar: /img/avatar.png
         avatar_rounded: true
         gravatar:
-        follow_link:
-        social_links: {}
+        follow_link: https://github.com/dnzhiwei
+        social_links:
+            Github:
+                icon: fab fa-github
+                url: https://github.com/dnzhiwei
+            Email:
+                icon: fas fa-envelope
+                url: mailto:dnzhiwei@gmail.com
     # Categories widget configurations
     -
         position: right
@@ -205,7 +211,7 @@ widgets:
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/
 plugins:
     # Enable page startup animations
-    animejs: true
+    animejs: false
     # Show the "back to top" button
     back_to_top: true
     # Baidu Analytics plugin settings

@@ -25,10 +25,19 @@ function renderIcon(icon) {
   return `<span class="tools-card-icon"><i class="${escapeHtml(icon)}"></i></span>`;
 }
 
+function resolveUrl(url) {
+  if (/^https?:\/\//i.test(url)) return url;
+  const base = String(hexo.config.url || '').replace(/\/$/, '');
+  return url.startsWith('/') ? base + url : `${base}/${url}`;
+}
+
 function renderItem(item) {
   const external = isExternal(item);
-  const attrs = external ? ' target="_blank" rel="noopener noreferrer"' : '';
-  return `<a class="tools-card" href="${escapeHtml(item.url)}"${attrs} title="${escapeHtml(item.desc || item.title)}">
+  const href = external ? resolveUrl(item.url) : item.url;
+  const attrs = external
+    ? ' target="_blank" rel="noopener noreferrer" data-pjax="0" data-tools-newtab="true"'
+    : '';
+  return `<a class="tools-card" href="${escapeHtml(href)}"${attrs} title="${escapeHtml(item.desc || item.title)}">
     ${renderIcon(item.icon)}
     <span class="tools-card-body">
       <span class="tools-card-title">${escapeHtml(item.title)}</span>
@@ -147,19 +156,43 @@ body.tools-page-active .card-content.article > h1.title,
 
 const TOOLS_JS = `
 (function () {
-  document.querySelectorAll('.tools-tab').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var section = btn.getAttribute('data-section');
-      var tab = btn.getAttribute('data-tab');
-      document.querySelectorAll('.tools-tab[data-section="' + section + '"]').forEach(function (b) {
-        b.classList.remove('is-active');
-      });
-      btn.classList.add('is-active');
-      document.querySelectorAll('.tools-panel[data-section="' + section + '"]').forEach(function (panel) {
-        panel.classList.toggle('is-hidden', panel.getAttribute('data-tab') !== tab);
+  function bindToolsTabs() {
+    document.querySelectorAll('.tools-tab').forEach(function (btn) {
+      if (btn.dataset.toolsTabBound) return;
+      btn.dataset.toolsTabBound = 'true';
+      btn.addEventListener('click', function () {
+        var section = btn.getAttribute('data-section');
+        var tab = btn.getAttribute('data-tab');
+        document.querySelectorAll('.tools-tab[data-section="' + section + '"]').forEach(function (b) {
+          b.classList.remove('is-active');
+        });
+        btn.classList.add('is-active');
+        document.querySelectorAll('.tools-panel[data-section="' + section + '"]').forEach(function (panel) {
+          panel.classList.toggle('is-hidden', panel.getAttribute('data-tab') !== tab);
+        });
       });
     });
-  });
+  }
+
+  function bindToolsNewTab() {
+    document.querySelectorAll('a.tools-card[data-tools-newtab]').forEach(function (link) {
+      if (link.dataset.toolsNewtabBound) return;
+      link.dataset.toolsNewtabBound = 'true';
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(link.href, '_blank', 'noopener,noreferrer');
+      }, true);
+    });
+  }
+
+  function initToolsPage() {
+    bindToolsTabs();
+    bindToolsNewTab();
+  }
+
+  initToolsPage();
+  document.addEventListener('pjax:complete', initToolsPage);
 })();
 `;
 
