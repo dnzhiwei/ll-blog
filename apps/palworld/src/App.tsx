@@ -106,9 +106,9 @@ function App() {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto flex">
+      <div className="max-w-7xl mx-auto flex gap-4 lg:gap-6 px-4 py-4 lg:py-5">
         <aside
-          className={`fixed lg:sticky lg:top-[65px] top-[65px] left-0 w-64 bg-pal-surface border-r border-pal-border z-30 transition-transform duration-200 self-start ${
+          className={`fixed lg:sticky lg:top-[65px] top-[65px] left-0 w-64 shrink-0 bg-pal-surface border-pal-border z-30 transition-transform duration-200 self-start border-r lg:border lg:rounded ${
             mobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
           }`}
         >
@@ -183,7 +183,7 @@ function App() {
           />
         )}
 
-        <main className="flex-1 min-w-0 px-4 py-5 lg:pl-0">
+        <main className="flex-1 min-w-0">
           <div className="mb-5">
             <h2 className="text-xl font-semibold text-pal-text mb-1">
               {selectedCategory
