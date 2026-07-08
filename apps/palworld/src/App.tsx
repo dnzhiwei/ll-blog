@@ -26,21 +26,21 @@ import { configCategories, defaultConfigItems } from './data/defaultConfig';
 import { useConfigStore } from './hooks/useConfigStore';
 
 const iconMap: Record<string, React.ReactNode> = {
-  Settings: <Settings className="w-5 h-5 text-pal-accent" />,
-  Server: <Server className="w-5 h-5 text-pal-accent" />,
-  Network: <Network className="w-5 h-5 text-pal-accent" />,
-  RefreshCw: <RefreshCw className="w-5 h-5 text-pal-accent" />,
-  HardDrive: <HardDrive className="w-5 h-5 text-pal-accent" />,
-  Pause: <Pause className="w-5 h-5 text-pal-accent" />,
-  FileText: <FileText className="w-5 h-5 text-pal-accent" />,
-  Gamepad2: <Gamepad2 className="w-5 h-5 text-pal-accent" />,
-  User: <User className="w-5 h-5 text-pal-accent" />,
-  Sparkles: <Sparkles className="w-5 h-5 text-pal-accent" />,
-  Building2: <Building2 className="w-5 h-5 text-pal-accent" />,
-  Package: <Package className="w-5 h-5 text-pal-accent" />,
-  Swords: <Swords className="w-5 h-5 text-pal-accent" />,
-  Sliders: <Sliders className="w-5 h-5 text-pal-accent" />,
-  Cpu: <Cpu className="w-5 h-5 text-pal-accent" />,
+  Settings: <Settings className="w-4 h-4 text-pal-text-muted" />,
+  Server: <Server className="w-4 h-4 text-pal-text-muted" />,
+  Network: <Network className="w-4 h-4 text-pal-text-muted" />,
+  RefreshCw: <RefreshCw className="w-4 h-4 text-pal-text-muted" />,
+  HardDrive: <HardDrive className="w-4 h-4 text-pal-text-muted" />,
+  Pause: <Pause className="w-4 h-4 text-pal-text-muted" />,
+  FileText: <FileText className="w-4 h-4 text-pal-text-muted" />,
+  Gamepad2: <Gamepad2 className="w-4 h-4 text-pal-text-muted" />,
+  User: <User className="w-4 h-4 text-pal-text-muted" />,
+  Sparkles: <Sparkles className="w-4 h-4 text-pal-text-muted" />,
+  Building2: <Building2 className="w-4 h-4 text-pal-text-muted" />,
+  Package: <Package className="w-4 h-4 text-pal-text-muted" />,
+  Swords: <Swords className="w-4 h-4 text-pal-text-muted" />,
+  Sliders: <Sliders className="w-4 h-4 text-pal-text-muted" />,
+  Cpu: <Cpu className="w-4 h-4 text-pal-text-muted" />,
 };
 
 function App() {
@@ -96,24 +96,20 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen pb-32">
-      <header className="fixed top-0 left-0 right-0 bg-pal-card/95 backdrop-blur-md border-b border-pal-border z-40">
+    <div className="min-h-screen pb-36 bg-pal-bg">
+      <header className="sticky top-0 bg-pal-surface border-b border-pal-border z-40">
         <div className="max-w-7xl mx-auto px-4 py-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-pal-accent to-blue-600 rounded-xl flex items-center justify-center shadow-glow">
-                <Gamepad2 className="w-6 h-6 text-pal-darker" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-pal-text">Palworld Configurator</h1>
-                <p className="text-xs text-pal-text-muted">服务器配置调整工具</p>
-              </div>
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <h1 className="text-lg font-semibold text-pal-text">幻兽帕鲁配置工具</h1>
+              <p className="text-sm text-pal-text-muted">编辑专用服务器 .env 配置</p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <button
+                type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="flex items-center gap-2 px-4 py-2 bg-pal-secondary hover:bg-pal-secondary/80 text-pal-text rounded-lg transition-all duration-200"
+                className="flex items-center gap-2 px-3 py-2 text-sm border border-pal-border bg-pal-surface text-pal-text rounded hover:bg-pal-muted"
               >
                 <Upload className="w-4 h-4" />
                 <span className="hidden sm:inline">导入 .env</span>
@@ -127,10 +123,11 @@ function App() {
               />
 
               <button
+                type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 text-pal-text-muted hover:text-pal-accent transition-colors"
+                className="lg:hidden p-2 text-pal-text-muted hover:text-pal-text border border-pal-border rounded"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>
@@ -138,34 +135,39 @@ function App() {
       </header>
 
       {importSuccess && (
-        <div className="fixed top-20 left-1/2 -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-fade-in">
-          配置文件导入成功！
+        <div className="fixed top-16 left-1/2 -translate-x-1/2 bg-pal-surface border border-pal-border text-pal-text px-4 py-2 rounded text-sm z-50">
+          配置文件导入成功
         </div>
       )}
 
-      <div className="flex pt-16">
-        <aside className={`fixed lg:relative top-16 left-0 bottom-32 w-64 bg-pal-card/50 border-r border-pal-border lg:border-none lg:bg-transparent transition-transform duration-300 z-30 lg:z-0 ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
-          <div className="p-4 space-y-1">
-            <div className="relative mb-4">
+      <div className="flex max-w-7xl mx-auto">
+        <aside
+          className={`fixed lg:sticky lg:top-[65px] top-[65px] left-0 bottom-36 w-64 bg-pal-surface border-r border-pal-border lg:h-[calc(100vh-65px-144px)] overflow-y-auto transition-transform duration-200 z-30 ${
+            mobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+          }`}
+        >
+          <div className="p-3 space-y-1">
+            <div className="relative mb-3">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-pal-text-muted" />
               <input
                 type="text"
                 placeholder="搜索配置项..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-pal-dark border border-pal-border rounded-lg text-pal-text placeholder-pal-text-muted focus:border-pal-accent transition-colors"
+                className="w-full pl-9 pr-3 py-2 text-sm bg-pal-surface border border-pal-border rounded text-pal-text placeholder-pal-text-muted"
               />
             </div>
 
             <button
+              type="button"
               onClick={() => {
                 setSelectedCategory(null);
                 setMobileMenuOpen(false);
               }}
-              className={`w-full px-4 py-2 rounded-lg flex items-center gap-2 transition-all duration-200 ${
+              className={`w-full px-3 py-2 rounded text-sm text-left flex items-center gap-2 ${
                 !selectedCategory
-                  ? 'bg-pal-accent/20 text-pal-accent font-medium'
-                  : 'text-pal-text-muted hover:text-pal-text hover:bg-pal-primary/30'
+                  ? 'bg-pal-muted text-pal-text font-medium border border-pal-border'
+                  : 'text-pal-text-muted hover:bg-pal-muted'
               }`}
             >
               <Sliders className="w-4 h-4" />
@@ -173,30 +175,33 @@ function App() {
             </button>
 
             {configCategories.map((category) => {
-              const hasMatchingItems = !searchQuery || getCategoryItems(category.id).some(
-                (item) =>
-                  item.key.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                  item.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                  item.description.toLowerCase().includes(searchQuery.toLowerCase())
-              );
+              const hasMatchingItems =
+                !searchQuery ||
+                getCategoryItems(category.id).some(
+                  (item) =>
+                    item.key.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    item.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    item.description.toLowerCase().includes(searchQuery.toLowerCase())
+                );
               if (!hasMatchingItems) return null;
 
               return (
                 <button
                   key={category.id}
+                  type="button"
                   onClick={() => {
                     setSelectedCategory(category.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`w-full px-4 py-2 rounded-lg flex items-center gap-2 transition-all duration-200 ${
+                  className={`w-full px-3 py-2 rounded text-sm text-left flex items-center gap-2 ${
                     selectedCategory === category.id
-                      ? 'bg-pal-accent/20 text-pal-accent font-medium'
-                      : 'text-pal-text-muted hover:text-pal-text hover:bg-pal-primary/30'
+                      ? 'bg-pal-muted text-pal-text font-medium border border-pal-border'
+                      : 'text-pal-text-muted hover:bg-pal-muted'
                   }`}
                 >
                   {iconMap[category.icon]}
-                  <span className="text-sm">{category.name}</span>
-                  <span className="ml-auto text-xs bg-pal-primary/50 px-2 py-0.5 rounded-full">
+                  <span className="flex-1">{category.name}</span>
+                  <span className="text-xs text-pal-text-muted">
                     {getCategoryItems(category.id).length}
                   </span>
                 </button>
@@ -207,27 +212,26 @@ function App() {
 
         {mobileMenuOpen && (
           <div
-            className="fixed inset-0 bg-black/50 z-20 lg:hidden"
+            className="fixed inset-0 bg-black/20 z-20 lg:hidden"
             onClick={() => setMobileMenuOpen(false)}
           />
         )}
 
-        <main className="flex-1 px-4 py-6 max-w-6xl mx-auto">
-          <div className="mb-6">
-            <h2 className="text-2xl font-bold text-pal-text mb-2">
+        <main className="flex-1 min-w-0 px-4 py-5">
+          <div className="mb-5">
+            <h2 className="text-xl font-semibold text-pal-text mb-1">
               {selectedCategory
                 ? configCategories.find((c) => c.id === selectedCategory)?.name
                 : '全部配置'}
             </h2>
-            <p className="text-pal-text-muted">
-              调整服务器配置，完成后点击下方按钮导出 .env 文件
+            <p className="text-sm text-pal-text-muted">
+              修改配置后，在页面底部导出 .env 文件
             </p>
           </div>
 
           {searchQuery && !hasSearchResults() ? (
-            <div className="text-center py-12">
-              <Search className="w-12 h-12 text-pal-text-muted mx-auto mb-4" />
-              <p className="text-pal-text-muted">未找到匹配的配置项</p>
+            <div className="text-center py-12 text-pal-text-muted text-sm">
+              未找到匹配的配置项
             </div>
           ) : selectedCategory ? (
             <div className="space-y-4">
@@ -240,15 +244,17 @@ function App() {
               />
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
               {configCategories.map((category) => {
                 const items = getCategoryItems(category.id);
-                const hasMatchingItems = !searchQuery || items.some(
-                  (item) =>
-                    item.key.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                    item.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                    item.description.toLowerCase().includes(searchQuery.toLowerCase())
-                );
+                const hasMatchingItems =
+                  !searchQuery ||
+                  items.some(
+                    (item) =>
+                      item.key.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                      item.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                      item.description.toLowerCase().includes(searchQuery.toLowerCase())
+                  );
                 if (!hasMatchingItems) return null;
 
                 return (

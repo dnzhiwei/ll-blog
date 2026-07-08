@@ -27,7 +27,7 @@ export const ConfigInput = ({ label, description, keyName, value, type, onChange
       const numValue = parseFloat(newValue);
       if (!isNaN(numValue)) {
         let clampedValue = numValue;
-        
+
         if (min !== undefined && numValue < min) {
           clampedValue = min;
         }
@@ -52,19 +52,17 @@ export const ConfigInput = ({ label, description, keyName, value, type, onChange
   const inputStep = step !== undefined ? step : (type === 'number' ? 'any' : undefined);
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-1.5">
       <div className="flex items-start justify-between gap-3">
-        <label className="flex-1 text-sm font-medium text-pal-text truncate">{label}</label>
-        <span className="shrink-0 text-xs text-pal-text-muted font-mono truncate max-w-[40%]">{keyName}</span>
+        <label className="flex-1 text-sm text-pal-text">{label}</label>
+        <span className="shrink-0 text-xs text-pal-text-muted truncate max-w-[40%]">{keyName}</span>
       </div>
-      {description && (
-        <p className="text-xs text-pal-text-muted">{description}</p>
-      )}
+      {description && <p className="text-xs text-pal-text-muted">{description}</p>}
       <input
         type={type === 'number' ? 'number' : 'text'}
         value={inputValue}
         onChange={handleChange}
-        className="w-full px-3 py-2 bg-pal-dark border border-pal-border rounded-lg text-pal-text placeholder-pal-text-muted focus:border-pal-accent transition-colors duration-200"
+        className="w-full px-3 py-2 text-sm bg-pal-surface border border-pal-border rounded text-pal-text placeholder-pal-text-muted"
         placeholder="请输入值"
         step={inputStep}
         min={min}

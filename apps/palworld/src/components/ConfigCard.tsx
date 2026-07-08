@@ -37,7 +37,7 @@ export const ConfigCard = ({ title, icon, items, searchQuery = '', defaultExpand
     switch (item.type) {
       case 'boolean':
         return (
-          <div key={item.key} className="py-3 border-b border-pal-border/50 last:border-0">
+          <div key={item.key} className="py-3 border-b border-pal-border last:border-0">
             <ConfigSwitch
               label={item.label}
               description={item.description}
@@ -49,7 +49,7 @@ export const ConfigCard = ({ title, icon, items, searchQuery = '', defaultExpand
         );
       case 'select':
         return (
-          <div key={item.key} className="py-3 border-b border-pal-border/50 last:border-0">
+          <div key={item.key} className="py-3 border-b border-pal-border last:border-0">
             <ConfigSelect
               label={item.label}
               description={item.description}
@@ -62,7 +62,7 @@ export const ConfigCard = ({ title, icon, items, searchQuery = '', defaultExpand
         );
       case 'number':
         return (
-          <div key={item.key} className="py-3 border-b border-pal-border/50 last:border-0">
+          <div key={item.key} className="py-3 border-b border-pal-border last:border-0">
             <ConfigInput
               label={item.label}
               description={item.description}
@@ -78,7 +78,7 @@ export const ConfigCard = ({ title, icon, items, searchQuery = '', defaultExpand
         );
       default:
         return (
-          <div key={item.key} className="py-3 border-b border-pal-border/50 last:border-0">
+          <div key={item.key} className="py-3 border-b border-pal-border last:border-0">
             <ConfigInput
               label={item.label}
               description={item.description}
@@ -93,31 +93,28 @@ export const ConfigCard = ({ title, icon, items, searchQuery = '', defaultExpand
   };
 
   return (
-    <div className="bg-pal-card border border-pal-border rounded-xl overflow-hidden hover:border-pal-accent/50 transition-colors duration-300">
+    <div className="bg-pal-surface border border-pal-border rounded overflow-hidden">
       <button
+        type="button"
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full px-4 py-3 flex items-center justify-between bg-pal-primary/20 hover:bg-pal-primary/30 transition-colors duration-200"
+        className="w-full px-4 py-3 flex items-center justify-between bg-pal-muted hover:bg-[#f0f0f0] border-b border-pal-border"
       >
         <div className="flex items-center gap-2">
           {icon}
-          <span className="font-semibold text-pal-text">{title}</span>
+          <span className="font-medium text-pal-text text-sm">{title}</span>
           {searchQuery && (
-            <span className="text-xs bg-pal-accent/20 text-pal-accent px-2 py-0.5 rounded-full">
+            <span className="text-xs text-pal-text-muted bg-pal-surface border border-pal-border px-2 py-0.5 rounded">
               {filteredItems.length}
             </span>
           )}
         </div>
         {isExpanded ? (
-          <ChevronUp className="w-5 h-5 text-pal-accent" />
+          <ChevronUp className="w-4 h-4 text-pal-text-muted" />
         ) : (
-          <ChevronDown className="w-5 h-5 text-pal-accent" />
+          <ChevronDown className="w-4 h-4 text-pal-text-muted" />
         )}
       </button>
-      {isExpanded && (
-        <div className="p-4">
-          {filteredItems.map(renderConfigItem)}
-        </div>
-      )}
+      {isExpanded && <div className="p-4">{filteredItems.map(renderConfigItem)}</div>}
     </div>
   );
 };
